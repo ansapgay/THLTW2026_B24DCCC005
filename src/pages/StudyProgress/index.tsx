@@ -381,8 +381,18 @@ const StudyProgress: React.FC = () => {
   };
 
   const renderModalContent = () => {
+    const onFormFinish = (values: any) => {
+      if (activeTab === '1') {
+        handleAddSubject(values);
+      } else if (activeTab === '2') {
+        handleAddStudyLog(values);
+      } else {
+        handleAddGoal(values);
+      }
+    };
+
     return (
-      <Form form={form} layout="vertical" onFinish={handleAddStudyLog}>
+      <Form form={form} layout="vertical" onFinish={onFormFinish}>
         {activeTab === '1' && (
           <>
             <Form.Item
@@ -581,7 +591,7 @@ const StudyProgress: React.FC = () => {
 
       <Modal
         title={getModalTitle()}
-        visible={isModalVisible}
+        open={isModalVisible}
         onCancel={() => setIsModalVisible(false)}
         width={600}
         footer={null}
