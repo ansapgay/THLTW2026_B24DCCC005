@@ -16,7 +16,6 @@ import {
   Col,
   Select,
   DatePicker,
-  TimePicker,
 } from 'antd';
 import {
   PlusOutlined,
@@ -485,112 +484,98 @@ const StudyProgress: React.FC = () => {
 
   return (
     <div style={{ padding: '24px', background: '#f0f2f5', minHeight: '100vh' }}>
-      <Tabs
-        activeKey={activeTab}
-        onChange={setActiveTab}
-        items={[
-          {
-            key: '1',
-            label: '📚 Quản lý môn học',
-            children: (
-              <Card>
-                <Space style={{ marginBottom: '16px' }}>
-                  <Button
-                    type="primary"
-                    icon={<PlusOutlined />}
-                    onClick={handleShowModal}
-                  >
-                    Thêm môn học
-                  </Button>
-                </Space>
-                <Table
-                  columns={subjectColumns}
-                  dataSource={subjects}
-                  rowKey="id"
-                  pagination={false}
-                />
-              </Card>
-            ),
-          },
-          {
-            key: '2',
-            label: '✏️ Quản lý lịch học',
-            children: (
-              <Card>
-                <Space style={{ marginBottom: '16px' }}>
-                  <Button
-                    type="primary"
-                    icon={<PlusOutlined />}
-                    onClick={handleShowModal}
-                  >
-                    Thêm lịch học
-                  </Button>
-                </Space>
-                <Table
-                  columns={logColumns}
-                  dataSource={studyLogs}
-                  rowKey="id"
-                  pagination={{ pageSize: 10 }}
-                />
-              </Card>
-            ),
-          },
-          {
-            key: '3',
-            label: '🎯 Mục tiêu hàng tháng',
-            children: (
-              <Card>
-                <Row gutter={16} style={{ marginBottom: '24px' }}>
-                  {subjects.map((subject) => {
-                    const goal = monthlyGoals.find(
-                      (g) =>
-                        g.subjectId === subject.id &&
-                        g.month === dayjs().format('YYYY-MM')
-                    );
-                    const progress = calculateProgress(subject.id);
+      <Tabs activeKey={activeTab} onChange={setActiveTab}>
+        <Tabs.TabPane tab="📚 Quản lý môn học" key="1">
+          <Card>
+            <Space style={{ marginBottom: '16px' }}>
+              <Button
+                type="primary"
+                icon={<PlusOutlined />}
+                onClick={handleShowModal}
+              >
+                Thêm môn học
+              </Button>
+            </Space>
+            <Table
+              columns={subjectColumns}
+              dataSource={subjects}
+              rowKey="id"
+              pagination={false}
+            />
+          </Card>
+        </Tabs.TabPane>
 
-                    return (
-                      <Col xs={24} sm={12} md={8} key={subject.id}>
-                        <Card size="small">
-                          <Statistic
-                            title={subject.name}
-                            value={progress}
-                            suffix="%"
-                            prefix={progress >= 100 ? '✓ ' : ''}
-                          />
-                          {goal && (
-                            <Progress percent={progress} status="active" />
-                          )}
-                        </Card>
-                      </Col>
-                    );
-                  })}
-                </Row>
+        <Tabs.TabPane tab="✏️ Quản lý lịch học" key="2">
+          <Card>
+            <Space style={{ marginBottom: '16px' }}>
+              <Button
+                type="primary"
+                icon={<PlusOutlined />}
+                onClick={handleShowModal}
+              >
+                Thêm lịch học
+              </Button>
+            </Space>
+            <Table
+              columns={logColumns}
+              dataSource={studyLogs}
+              rowKey="id"
+              pagination={{ pageSize: 10 }}
+            />
+          </Card>
+        </Tabs.TabPane>
 
-                <Space style={{ marginBottom: '16px' }}>
-                  <Button
-                    type="primary"
-                    icon={<PlusOutlined />}
-                    onClick={handleShowModal}
-                  >
-                    Thêm mục tiêu
-                  </Button>
-                </Space>
-                <Table
-                  columns={goalColumns}
-                  dataSource={monthlyGoals}
-                  rowKey="id"
-                  pagination={false}
-                />
-              </Card>
-            ),
-          },
-        ]}
-      />
+        <Tabs.TabPane tab="🎯 Mục tiêu hàng tháng" key="3">
+          <Card>
+            <Row gutter={16} style={{ marginBottom: '24px' }}>
+              {subjects.map((subject) => {
+                const goal = monthlyGoals.find(
+                  (g) =>
+                    g.subjectId === subject.id &&
+                    g.month === dayjs().format('YYYY-MM')
+                );
+                const progress = calculateProgress(subject.id);
+
+                return (
+                  <Col xs={24} sm={12} md={8} key={subject.id}>
+                    <Card size="small">
+                      <Statistic
+                        title={subject.name}
+                        value={progress}
+                        suffix="%"
+                        prefix={progress >= 100 ? '✓ ' : ''}
+                      />
+                      {goal && (
+                        <Progress percent={progress} status="active" />
+                      )}
+                    </Card>
+                  </Col>
+                );
+              })}
+            </Row>
+
+            <Space style={{ marginBottom: '16px' }}>
+              <Button
+                type="primary"
+                icon={<PlusOutlined />}
+                onClick={handleShowModal}
+              >
+                Thêm mục tiêu
+              </Button>
+            </Space>
+            <Table
+              columns={goalColumns}
+              dataSource={monthlyGoals}
+              rowKey="id"
+              pagination={false}
+            />
+          </Card>
+        </Tabs.TabPane>
+      </Tabs>
 
       <Modal
         title={getModalTitle()}
-        open={isModalVisible}
+        visible={isModalVisible}
         onCancel={() => setIsModalVisible(false)}
         width={600}
         footer={null}

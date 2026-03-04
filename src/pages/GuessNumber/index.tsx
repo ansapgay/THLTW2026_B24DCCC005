@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Card, Button, Input, Space, Statistic, Alert, message } from 'antd';
+import { Card, Button, Input, Space, Statistic, Alert, message, Row, Col } from 'antd';
 import { ReloadOutlined } from '@ant-design/icons';
 
 const GuessNumberGame: React.FC = () => {
@@ -106,20 +106,24 @@ const GuessNumberGame: React.FC = () => {
 
           {/* Input game */}
           {gameStatus === 'playing' && (
-            <Space.Compact style={{ width: '100%' }}>
-              <Input
-                type="number"
-                placeholder="Nhập số từ 1 đến 100"
-                value={guess}
-                onChange={(e) => setGuess(e.target.value)}
-                onKeyPress={handleKeyPress}
-                disabled={gameStatus !== 'playing'}
-                style={{ fontSize: '16px' }}
-              />
-              <Button type="primary" onClick={handleGuess} style={{ fontSize: '16px' }}>
-                Dự đoán
-              </Button>
-            </Space.Compact>
+            <Row gutter={8}>
+              <Col flex="1">
+                <Input
+                  type="number"
+                  placeholder="Nhập số từ 1 đến 100"
+                  value={guess}
+                  onChange={(e) => setGuess(e.target.value)}
+                  onKeyPress={handleKeyPress}
+                  disabled={gameStatus !== 'playing'}
+                  style={{ fontSize: '16px' }}
+                />
+              </Col>
+              <Col flex="0 0 auto">
+                <Button type="primary" onClick={handleGuess} style={{ fontSize: '16px' }}>
+                  Dự đoán
+                </Button>
+              </Col>
+            </Row>
           )}
 
           {/* Lịch sử dự đoán */}
