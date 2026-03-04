@@ -48,6 +48,18 @@
 		icon: 'ShoppingOutlined',
 		component: './ProductList',
 	},
+	{
+		path: '/guess-number-game',
+		name: 'Bài 1: Đoán số',
+		icon: 'GamepadOutlined',
+		component: './GuessNumber',
+	},
+	{
+		path: '/study-progress',
+		name: 'Bài 2: Quản lý học tập',
+		icon: 'BookOutlined',
+		component: './StudyProgress',
+	},
 	// DANH MUC HE THONG
 	// {
 	// 	name: 'DanhMuc',
