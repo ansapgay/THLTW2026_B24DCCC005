@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Card, Button, Input, Space, Statistic, Alert, message } from 'antd';
 import { ReloadOutlined } from '@ant-design/icons';
-import styles from './index.less';
 
 const GuessNumberGame: React.FC = () => {
   const [secretNumber, setSecretNumber] = useState<number>(0);
@@ -79,11 +78,14 @@ const GuessNumberGame: React.FC = () => {
   };
 
   return (
-    <div className={styles.container}>
-      <Card className={styles.gameCard} title="🎮 Trò Chơi Đoán Số">
+    <div style={{ padding: '24px', background: '#f0f2f5', minHeight: '100vh' }}>
+      <Card 
+        style={{ maxWidth: '600px', margin: '0 auto', boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)' }} 
+        title="🎮 Trò Chơi Đoán Số"
+      >
         <Space direction="vertical" style={{ width: '100%' }} size="large">
           {/* Thống kê */}
-          <div className={styles.statsContainer}>
+          <div style={{ display: 'flex', justifyContent: 'center', padding: '20px', background: '#fafafa', borderRadius: '8px' }}>
             <Statistic
               title="Lượt dự đoán"
               value={attempts}
@@ -122,11 +124,21 @@ const GuessNumberGame: React.FC = () => {
 
           {/* Lịch sử dự đoán */}
           {guessHistory.length > 0 && (
-            <div className={styles.historyContainer}>
-              <h3>Lịch sử dự đoán:</h3>
-              <div className={styles.guessHistory}>
+            <div style={{ padding: '16px', background: '#f5f5f5', borderRadius: '8px' }}>
+              <h3 style={{ margin: '0 0 12px 0', fontSize: '16px', fontWeight: 600 }}>Lịch sử dự đoán:</h3>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
                 {guessHistory.map((num, index) => (
-                  <span key={index} className={styles.guessItem}>
+                  <span 
+                    key={index} 
+                    style={{
+                      padding: '8px 12px',
+                      background: '#1890ff',
+                      color: 'white',
+                      borderRadius: '4px',
+                      fontWeight: 500,
+                      display: 'inline-block',
+                    }}
+                  >
                     {num}
                   </span>
                 ))}

@@ -25,7 +25,6 @@ import {
   SaveOutlined,
 } from '@ant-design/icons';
 import dayjs from 'dayjs';
-import styles from './index.less';
 
 interface Subject {
   id: string;
@@ -485,7 +484,7 @@ const StudyProgress: React.FC = () => {
   };
 
   return (
-    <div className={styles.container}>
+    <div style={{ padding: '24px', background: '#f0f2f5', minHeight: '100vh' }}>
       <Tabs
         activeKey={activeTab}
         onChange={setActiveTab}
