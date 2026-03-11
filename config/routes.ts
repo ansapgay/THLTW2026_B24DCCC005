@@ -60,6 +60,18 @@
 		icon: 'BookOutlined',
 		component: './StudyProgress',
 	},
+	{
+		path: '/rock-paper-scissors',
+		name: 'Bài 1: Trò chơi Oán Tú Tì',
+		icon: 'CopyOutlined',
+		component: './RockPaperScissors',
+	},
+	{
+		path: '/question-bank',
+		name: 'Bài 2: Quản lý ngân hàng câu hỏi',
+		icon: 'FileSearchOutlined',
+		component: './QuestionBank',
+	},
 	// DANH MUC HE THONG
 	// {
 	// 	name: 'DanhMuc',
