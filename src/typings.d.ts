@@ -59,3 +59,85 @@ declare const APP_CONFIG_TITLE_CORE: string;
 declare const APP_CONFIG_TITLE_CSVC: string;
 declare const APP_CONFIG_TITLE_THU_VIEN: string;
 declare const APP_CONFIG_TITLE_QLVB: string;
+
+// Appointment Booking System Types
+declare namespace QLichHen {
+	interface Employee {
+		id: string;
+		name: string;
+		phone: string;
+		email?: string;
+		maxClientsPerDay: number; // Số khách giới hạn/ngày
+		workingHours: {
+			dayOfWeek: number; // 0-6 (0 = Sunday)
+			startTime: string; // "09:00"
+			endTime: string; // "17:00"
+		}[];
+		isActive: boolean;
+		createdAt?: string;
+		updatedAt?: string;
+	}
+
+	interface Service {
+		id: string;
+		name: string;
+		description?: string;
+		price: number;
+		durationMinutes: number; // Thời gian thực hiện (phút)
+		createdAt?: string;
+		updatedAt?: string;
+	}
+
+	interface Appointment {
+		id: string;
+		customerId: string;
+		customerName: string;
+		customerPhone: string;
+		customerEmail?: string;
+		employeeId: string;
+		serviceId: string;
+		scheduledTime: string; // ISO 8601 datetime
+		endTime?: string; // ISO 8601 datetime
+		status: 'pending' | 'confirmed' | 'completed' | 'cancelled'; // Chờ duyệt/Xác nhận/Hoàn thành/Hủy
+		notes?: string;
+		createdAt?: string;
+		updatedAt?: string;
+	}
+
+	interface Rating {
+		id: string;
+		appointmentId: string;
+		employeeId: string;
+		customerId: string;
+		rating: number; // 1-5
+		comment?: string;
+		response?: string; // Phản hồi từ nhân viên
+		respondedAt?: string;
+		createdAt?: string;
+		updatedAt?: string;
+	}
+
+	interface Statistics {
+		totalAppointments: number;
+		completedAppointments: number;
+		pendingAppointments: number;
+		confirmedAppointments: number;
+		totalEmployees: number;
+		totalServices: number;
+		totalRatings: number;
+		appointmentsByDate: Record<string, number>;
+		revenueByService: Record<string, number>;
+		revenueByEmployee: Record<string, number>;
+	}
+}
+
+declare namespace TodoList {
+	interface TodoItem {
+		id: string;
+		title: string;
+		description?: string;
+		completed: boolean;
+		dueDate?: string;
+		createdAt?: string;
+	}
+}

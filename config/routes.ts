@@ -42,6 +42,12 @@
 		icon: 'OrderedListOutlined',
 		component: './TodoList',
 	},
+	{
+		path: '/lich-hen',
+		name: 'Quản lý Lịch hẹn',
+		icon: 'CalendarOutlined',
+		component: './QLichHen',
+	},
 
 	// DANH MUC HE THONG
 	// {
