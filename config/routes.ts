@@ -48,6 +48,42 @@
 		icon: 'ShoppingOutlined',
 		component: './ProductList',
 	},
+
+	// VĂN BẰNG TỐT NGHIỆP - BÀI THỰC HÀNH 04
+	{
+		name: 'Quản lý Văn bằng',
+		path: '/van-bang',
+		icon: 'FileTextOutlined',
+		routes: [
+			{
+				name: 'Sổ văn bằng',
+				path: 'so-van-bang',
+				component: './VanBang/SoVanBang',
+			},
+			{
+				name: 'Quyết định tốt nghiệp',
+				path: 'quyet-dinh-tot-nghiep',
+				component: './VanBang/QuyetDinhTotNghiep',
+			},
+			{
+				name: 'Cấu hình biểu mẫu',
+				path: 'cau-hinh-bieu-mau',
+				component: './VanBang/CauHinhBieuMau',
+			},
+			{
+				name: 'Thông tin văn bằng',
+				path: 'thong-tin-van-bang',
+				component: './VanBang/ThongTinVanBang',
+			},
+		],
+	},
+	{
+		path: '/van-bang-search',
+		name: 'Tra cứu Văn bằng',
+		icon: 'SearchOutlined',
+		component: './VanBang/TraCuuVanBang',
+	},
+
 	// DANH MUC HE THONG
 	// {
 	// 	name: 'DanhMuc',
