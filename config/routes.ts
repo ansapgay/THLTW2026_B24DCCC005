@@ -43,6 +43,35 @@
 		component: './TodoList',
 	},
 
+	// TRAVEL PLANNING
+	{
+		path: '/travel',
+		name: 'Lập kế hoạch du lịch',
+		icon: 'GlobalOutlined',
+		routes: [
+			{
+				path: '/travel',
+				name: 'Khám phá điểm đến',
+				component: './TravelDiscovery',
+			},
+			{
+				path: '/travel/create-itinerary',
+				name: 'Tạo lịch trình',
+				component: './CreateItinerary',
+			},
+			{
+				path: '/travel/budget',
+				name: 'Quản lý ngân sách',
+				component: './BudgetManagement',
+			},
+			{
+				path: '/travel/admin',
+				name: 'Quản trị',
+				component: './TravelAdmin',
+			},
+		],
+	},
+
 	// DANH MUC HE THONG
 	// {
 	// 	name: 'DanhMuc',
