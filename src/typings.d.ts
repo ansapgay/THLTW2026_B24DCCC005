@@ -59,3 +59,63 @@ declare const APP_CONFIG_TITLE_CORE: string;
 declare const APP_CONFIG_TITLE_CSVC: string;
 declare const APP_CONFIG_TITLE_THU_VIEN: string;
 declare const APP_CONFIG_TITLE_QLVB: string;
+
+declare namespace TodoList {
+	interface TodoItem {
+		id?: string;
+		text: string;
+		completed: boolean;
+		dueDate?: string;
+	}
+}
+
+declare namespace CauLacBo {
+	type Status = 'active' | 'inactive';
+
+	interface Item {
+		id: string;
+		name: string;
+		avatar?: string;
+		foundedDate: string;
+		description: string; // HTML content
+		chairman: string;
+		active: boolean;
+		createdAt: string;
+		updatedAt: string;
+	}
+}
+
+declare namespace DangKyThanhVien {
+	type Status = 'Pending' | 'Approved' | 'Rejected';
+
+	interface HistoryItem {
+		action: string;
+		adminName: string;
+		timestamp: string;
+		reason?: string;
+	}
+
+	interface Item {
+		id: string;
+		fullName: string;
+		email: string;
+		phone: string;
+		gender: string;
+		address: string;
+		strength: string;
+		cauLacBoId: string;
+		cauLacBoName: string;
+		reason: string;
+		status: Status;
+		note: string;
+		history: HistoryItem[];
+		createdAt: string;
+		updatedAt: string;
+	}
+}
+
+declare namespace ThanhVienCauLacBo {
+	interface Item extends Omit<DangKyThanhVien.Item, 'history'> {
+		// Members are approved registrations
+	}
+}

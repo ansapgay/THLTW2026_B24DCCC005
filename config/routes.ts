@@ -56,7 +56,39 @@
 	// 		},
 	// 	],
 	// },
-
+	{
+		path: '/products',
+		name: 'Products',
+		component: './products',
+	},
+	// CLB QUAN LY
+	{
+		path: '/cau-lac-bo',
+		name: 'Câu Lạc Bộ',
+		icon: 'TeamOutlined',
+		routes: [
+			{
+				path: '/cau-lac-bo',
+				name: 'Danh sách CLB',
+				component: './CauLacBo',
+			},
+			{
+				path: '/cau-lac-bo/dang-ky',
+				name: 'Đơn đăng ký',
+				component: './DangKyThanhVien',
+			},
+			{
+				path: '/cau-lac-bo/thanh-vien',
+				name: 'Quản lý thành viên',
+				component: './ThanhVienCauLacBo',
+			},
+			{
+				path: '/cau-lac-bo/bao-cao',
+				name: 'Báo cáo & Thống kê',
+				component: './BaoCaoThongKe',
+			},
+		],
+	},
 	{
 		path: '/notification',
 		routes: [
