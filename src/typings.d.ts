@@ -119,3 +119,42 @@ declare namespace ThanhVienCauLacBo {
 		// Members are approved registrations
 	}
 }
+
+declare namespace DonHang {
+	type StatusDonHang = 'Chờ xác nhận' | 'Đang giao' | 'Hoàn thành' | 'Hủy';
+
+	interface Customer {
+		id: string;
+		name: string;
+		email: string;
+		phone: string;
+		address: string;
+	}
+
+	interface Product {
+		id: number;
+		name: string;
+		price: number;
+		quantity: number;
+	}
+
+	interface OrderProduct {
+		productId: number;
+		productName: string;
+		price: number;
+		quantity: number;
+		total: number;
+	}
+
+	interface Item {
+		id: string;
+		maDonHang: string;
+		customer: Customer;
+		products: OrderProduct[];
+		totalAmount: number;
+		status: StatusDonHang;
+		orderDate: string;
+		createdAt: string;
+		updatedAt?: string;
+	}
+}

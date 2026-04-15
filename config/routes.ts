@@ -90,6 +90,12 @@
 		name: 'Products',
 		component: './products',
 	},
+	{
+		path: '/don-hang',
+		name: 'Quản lý đơn hàng',
+		icon: 'ShoppingCartOutlined',
+		component: './DonHang',
+	},
 	// CLB QUAN LY
 	{
 		path: '/cau-lac-bo',
