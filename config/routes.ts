@@ -159,6 +159,36 @@
 		component: './exception/DangCapNhat',
 		layout: false,
 	},
+	// BLOG
+	{
+		path: '/blog',
+		name: 'Blog',
+		icon: 'FileTextOutlined',
+		routes: [
+			{
+				path: '/blog',
+				name: 'Blog Home',
+				component: './Blog',
+			},
+			{
+				path: '/blog/:slug',
+				name: 'Blog Detail',
+				component: './Blog/detail',
+				hideInMenu: true,
+			},
+			{
+				path: '/blog-admin',
+				name: 'Blog Management',
+				component: './BlogAdmin',
+			},
+			{
+				path: '/blog-about',
+				name: 'About',
+				component: './BlogAbout',
+				hideInMenu: true,
+			},
+		],
+	},
 	{
 		component: './exception/404',
 	},
