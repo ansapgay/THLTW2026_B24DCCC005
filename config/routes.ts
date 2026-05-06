@@ -159,6 +159,33 @@
 		component: './exception/DangCapNhat',
 		layout: false,
 	},
+	// TASK MANAGEMENT
+	{
+		path: '/task-management',
+		name: 'Task Management',
+		icon: 'CheckSquareOutlined',
+		routes: [
+			{
+				path: '/task-management',
+				redirect: '/task-management/dashboard',
+			},
+			{
+				path: '/task-management/dashboard',
+				name: 'Dashboard',
+				component: './TaskManagement/Dashboard',
+			},
+			{
+				path: '/task-management/kanban',
+				name: 'Kanban Board',
+				component: './TaskManagement/KanbanBoard',
+			},
+			{
+				path: '/task-management/list',
+				name: 'Task List',
+				component: './TaskManagement/TaskList',
+			},
+		],
+	},
 	// BLOG
 	{
 		path: '/blog',
